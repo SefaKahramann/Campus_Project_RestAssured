@@ -62,10 +62,6 @@ public class ConfigReader {
                 String gradingID = id;
                 properties.setProperty(keyword, gradingID);
                 break;
-            case "schoolID":
-                String schoolID = id;
-                properties.setProperty(keyword, schoolID);
-                break;
             case "educationID":
                 String educationID = id;
                 properties.setProperty(keyword, educationID);
