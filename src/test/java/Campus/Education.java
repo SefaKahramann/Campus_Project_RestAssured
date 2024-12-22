@@ -12,6 +12,7 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class Education extends Campus_ParentPage {
+
     @Test
     public void getEducation() {
         String education1 = "";
@@ -39,10 +40,10 @@ public class Education extends Campus_ParentPage {
         ConfigReader.updateProperty("educationID", education1);
     }
 
-    @Test
+    @Test(dependsOnMethods = "getEducation")
     public void addEducation() {
-
         Map<String, Object> addEducation = new LinkedHashMap<>();
+
         addEducation.put("id", null);
         addEducation.put("name", faker.name().fullName());
         addEducation.put("description", faker.lorem().sentence());
@@ -69,9 +70,10 @@ public class Education extends Campus_ParentPage {
         ConfigReader.updateProperty("javaID", javaID);
     }
 
-    @Test
+    @Test(dependsOnMethods = "addEducation")
     public void updateEducation() {
         Map<String, Object> updateEducation = new LinkedHashMap<>();
+
         updateEducation.put("id", ConfigReader.getProperty("javaID"));
         updateEducation.put("name", faker.name().fullName());
         updateEducation.put("description", faker.lorem().sentence());
@@ -95,7 +97,7 @@ public class Education extends Campus_ParentPage {
                 .extract().path("id");
     }
 
-    @Test
+    @Test(dependsOnMethods = "updateEducation")
     public void deleteEducation() {
         given()
                 .spec(reqSpec)
