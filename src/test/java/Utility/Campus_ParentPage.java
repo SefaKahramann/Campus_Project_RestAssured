@@ -22,8 +22,8 @@ public class Campus_ParentPage {
         baseURI = ConfigReader.getProperty("baseURI");
 
         Map<String, String> userCredential = new HashMap<>();
-        userCredential.put("username", "turkeyts");
-        userCredential.put("password", "TechnoStudy123");
+        userCredential.put("username",ConfigReader.getProperty("username"));
+        userCredential.put("password", ConfigReader.getProperty("password"));
         userCredential.put("rememberMe", "true");
 
         Cookies cookies =
