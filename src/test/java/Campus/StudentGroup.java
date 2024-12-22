@@ -14,7 +14,6 @@ import java.util.Map;
 import static io.restassured.RestAssured.given;
 
 public class StudentGroup extends Campus_ParentPage {
-
     @Test
     public void getStudent() {
         String student1 = "";
@@ -43,7 +42,7 @@ public class StudentGroup extends Campus_ParentPage {
         ConfigReader.updateProperty("student4", student4);
     }
 
-    @Test
+    @Test(dependsOnMethods = "getStudent")
     public void createStudentGroup(){
         Map<String, Object> studentGroup = new LinkedHashMap<>();
         studentGroup.put("id", null);
@@ -71,7 +70,7 @@ public class StudentGroup extends Campus_ParentPage {
         ConfigReader.updateProperty("groupID",groupID);
     }
 
-    @Test
+    @Test(dependsOnMethods = "createStudentGroup")
     public void updateStudentGroup(){
         Map<String, Object> studentGroup = new LinkedHashMap<>();
         studentGroup.put("id", ConfigReader.getProperty("groupID"));
@@ -93,10 +92,9 @@ public class StudentGroup extends Campus_ParentPage {
                         .statusCode(200)
 
                         .log().body();
-
     }
 
-    @Test
+    @Test()
     public void createStudent(){
         given()
                 .spec(reqSpec)
@@ -110,7 +108,7 @@ public class StudentGroup extends Campus_ParentPage {
                 .log().body();
     }
 
-    @Test
+    @Test(dependsOnMethods = "createStudent")
     public void addStudentGroup(){
         List<String>students=new ArrayList<>();
         students.add(ConfigReader.getProperty("student1"));
@@ -129,10 +127,9 @@ public class StudentGroup extends Campus_ParentPage {
                 .statusCode(200)
 
                 .log().body();
-
     }
 
-    @Test
+    @Test(dependsOnMethods = "addStudentGroup")
     public void deleteStudent(){
         List<String>students=new ArrayList<>();
         students.add(ConfigReader.getProperty("student1"));
@@ -164,7 +161,7 @@ public class StudentGroup extends Campus_ParentPage {
                 .log().body();
     }
 
-    @Test
+    @Test(dependsOnMethods ="deleteStudentGroup")
     public void deleteNegativeStudentGroup(){
         given()
                 .spec(reqSpec)
