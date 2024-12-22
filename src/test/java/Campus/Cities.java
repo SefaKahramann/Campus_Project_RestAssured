@@ -45,7 +45,7 @@ public class Cities extends Campus_ParentPage {
         ConfigReader.updateProperty("citiesID", citiesId);
     }
 
-    @Test
+    @Test(dependsOnMethods = "createCities")
     public void updateCities() {
         Map<String, Object> cities = new LinkedHashMap<>();
         cities.put("id", ConfigReader.getProperty("citiesID"));
@@ -75,7 +75,7 @@ public class Cities extends Campus_ParentPage {
                 .log().body();
     }
 
-    @Test
+    @Test(dependsOnMethods = "updateCities")
     public void deleteCities() {
         given()
                 .spec(reqSpec)

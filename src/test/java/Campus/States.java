@@ -41,7 +41,7 @@ public class States extends Campus_ParentPage {
         ConfigReader.updateProperty("statesID", statesID);
     }
 
-    @Test
+    @Test(dependsOnMethods = "createState")
     public void updateState() {
         Map<String, Object> state = new LinkedHashMap<>();
         state.put("id", null);
@@ -69,7 +69,7 @@ public class States extends Campus_ParentPage {
         ;
     }
 
-    @Test
+    @Test(dependsOnMethods = "updateState")
     public void deleteState() {
         given()
                 .spec(reqSpec)
