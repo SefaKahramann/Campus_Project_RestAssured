@@ -1,4 +1,6 @@
 package Campus;
 
-public class Incident {
+import Utility.Campus_ParentPage;
+
+public class Incident extends Campus_ParentPage {
 }

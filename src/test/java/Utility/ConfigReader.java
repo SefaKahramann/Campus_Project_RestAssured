@@ -1,4 +1,4 @@
-package TMDB.Utility;
+package Utility;
 
 import java.io.FileInputStream;
 import java.io.IOException;

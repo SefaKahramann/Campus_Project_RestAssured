@@ -1,4 +1,6 @@
 package Campus;
 
-public class Grading {
+import Utility.Campus_ParentPage;
+
+public class Grading extends Campus_ParentPage {
 }

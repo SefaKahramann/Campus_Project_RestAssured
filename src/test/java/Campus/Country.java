@@ -1,4 +1,6 @@
 package Campus;
 
-public class Country {
+import Utility.Campus_ParentPage;
+
+public class Country extends Campus_ParentPage {
 }
