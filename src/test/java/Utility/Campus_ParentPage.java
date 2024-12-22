@@ -14,7 +14,7 @@ import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 
 public class Campus_ParentPage {
-    Faker faker=new Faker();
+    public Faker faker=new Faker();
     public RequestSpecification reqSpec;
 
     @BeforeClass
@@ -35,7 +35,6 @@ public class Campus_ParentPage {
                         .post("/auth/login")
 
                         .then()
-                        .log().all()
                         .statusCode(200)
                         .extract().response().detailedCookies();
         ;
